@@ -86,7 +86,7 @@
     "fastboot-cluster-node-cache": "^0.1.0",
     "loader.js": "^4.1.0",
     "moment": "^2.17.1",
-    "moment-timezone": "^0.5.11",
+    "moment-timezone": "0.5.11",
     "postcss-flexbugs-fixes": "^2.1.0",
     "torii": "0.8.1"
   }
