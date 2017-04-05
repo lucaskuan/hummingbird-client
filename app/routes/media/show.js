@@ -121,7 +121,6 @@ export default Route.extend(CanonicalRedirectMixin, CoverPageMixin, {
       }
     }];
     if (get(model, 'averageRating')) {
-      const rating = `${get(model, 'averageRating').toFixed(2)} out of 5`;
       data.push({
         type: 'meta',
         tagId: 'meta-twitter-label1',
@@ -134,7 +133,7 @@ export default Route.extend(CanonicalRedirectMixin, CoverPageMixin, {
         tagId: 'meta-twitter-data1',
         attrs: {
           property: 'twitter:data1',
-          content: rating
+          content: `${get(model, 'averageRating')}%`
         }
       }, {
         type: 'meta',
@@ -172,9 +171,9 @@ export default Route.extend(CanonicalRedirectMixin, CoverPageMixin, {
     if (get(model, 'averageRating')) {
       data.aggregateRating = {
         '@type': 'AggregateRating',
-        bestRating: 10,
-        worstRating: 1,
-        ratingValue: (get(model, 'averageRating').toFixed(2) * 2),
+        bestRating: 100,
+        worstRating: 5,
+        ratingValue: get(model, 'averageRating'),
         ratingCount: get(model, 'totalRatings')
       };
     }
