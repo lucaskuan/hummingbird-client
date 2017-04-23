@@ -31,6 +31,7 @@ export default Route.extend(DataErrorMixin, {
   headTags() {
     const model = this.modelFor(get(this, 'routeName'));
     const desc = clip(get(model, 'content'), 200);
+    const squashedRating = Math.floor(get(this, 'rating') / 2) / 2;
     return [{
       type: 'meta',
       tagId: 'meta-description',
@@ -85,7 +86,7 @@ export default Route.extend(DataErrorMixin, {
       tagId: 'meta-twitter-data2',
       attrs: {
         property: 'twitter:data2',
-        content: `${get(model, 'rating')} out of 5`
+        content: `${squashedRating} out of 5`
       }
     }];
   }
