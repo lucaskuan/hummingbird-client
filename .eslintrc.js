@@ -1,15 +1,17 @@
 module.exports = {
   root: true,
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 2017,
     sourceType: 'module'
   },
   extends: 'airbnb-base',
   env: {
     browser: true
   },
+  plugins: ['compat'],
   rules: {
     // enable
+    'compat/compat': 'error',
     'curly': 'error',
     // disable
     'no-console': 'off',

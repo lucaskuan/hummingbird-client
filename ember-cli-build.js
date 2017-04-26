@@ -3,19 +3,24 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const PostCSSFlex = require('postcss-flexbugs-fixes');
 const Autoprefixer = require('autoprefixer');
 const svgoUniqueIds = require('svgo-plugin-unify-ids');
+const targets = require('./config/targets');
 
 module.exports = function(defaults) {
   const app = new EmberApp(defaults, {
     babel: {
-      comments: false
+      comments: false,
+      plugins: ['transform-object-rest-spread']
     },
+
     'ember-cli-babel': {
       includePolyfill: true
     },
+
     sourcemaps: {
       enabled: true,
       extensions: ['js']
     },
+
     outputPaths: {
       app: {
         css: {
@@ -24,22 +29,24 @@ module.exports = function(defaults) {
         }
       }
     },
+
     sassOptions: {
       includePaths: ['node_modules/bootstrap/scss']
     },
+
     postcssOptions: {
       compile: { enabled: false },
       filter: {
         enabled: true,
         plugins: [
           { module: PostCSSFlex },
-          {
-            module: Autoprefixer,
-            options: { browsers: ['> 1%', 'last 2 versions'] }
+          { module: Autoprefixer,
+            options: { browsers: targets.browsers }
           }
         ]
       }
     },
+
     // can be removed when ember-web-app supports mstile
     fingerprint: {
       exclude: [
@@ -49,6 +56,7 @@ module.exports = function(defaults) {
         'mstile-310x310.png'
       ]
     },
+
     svgJar: {
       persist: false,
       optimizer: {
@@ -60,6 +68,7 @@ module.exports = function(defaults) {
         ]
       }
     },
+
     // assets
     nodeAssets: {
       autosize: {
