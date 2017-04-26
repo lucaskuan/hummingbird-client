@@ -44,8 +44,9 @@
         streamType=streamType
         streamId=streamId
         streamFilter=(if (eq streamType "global") "user" "all")
-        readOnly=(cannot "write post")}}
-      </div>
+        readOnly=(cannot "write post")
+      }}
+    </div>
 
     <div class="feed-sidebar">
       <div class="is-sticky">
@@ -53,8 +54,6 @@
         {{#if (and session.hasUser (not session.account.feedCompleted))}}
           {{dashboard/onboarding/checklist-progress user=session.account class="sidebar-item"}}
         {{/if}}
-
-
 
         {{! Kitsu Dashboard Sidebar Ad }}
         {{! Hidden on mobile currently }}

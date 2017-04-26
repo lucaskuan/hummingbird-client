@@ -12,10 +12,6 @@ module.exports = function(defaults) {
       plugins: ['transform-object-rest-spread']
     },
 
-    'ember-cli-babel': {
-      includePolyfill: true
-    },
-
     sourcemaps: {
       enabled: true,
       extensions: ['js']
